@@ -285,6 +285,27 @@
 									value='\{"columnKey": "CustomerName"}' />
 							</table:customData>
 						</table:AnalyticalColumn>
+						
+						<!--Extension for Column City because City name needs to be called on load of application -->
+							<!-- We have to select this column with inResult="true" because if 
+							we group by ID (in UI) we want to display the Name -->
+						<table:AnalyticalColumn 
+							width="150px" id="fin.ar.lineitems.display1.CityName"
+							grouped="false" summed="false" autoResizable="true" hAlign="Left"
+							inResult="true" leadingProperty="CityName" sortProperty="CityName"
+							filterProperty="CityName">
+							<Label
+								text="{i18n>City}"></Label>
+							<table:template>
+								<Text text="{CityName}" wrapping="false"></Text>
+							</table:template>
+							<table:customData>
+								<core:CustomData key="p13nData"
+									value='\{"columnKey": "CityName"}' />
+							</table:customData>
+						</table:AnalyticalColumn>
+						
+						<!-- -->
 
 						<table:AnalyticalColumn grouped="false"
 							autoResizable="true" width="6em" hAlign="Left"
@@ -736,11 +757,11 @@
 									value='\{"columnKey": "FinancialAccountType", "maxLength": "1"}' />
 							</table:customData>
 						</table:AnalyticalColumn>
-						<!-- Custom Ananlytical Column  Extension-->
+						<!-- Custom Ananlytical Column  Extension for Customer name and city-->
 						<table:AnalyticalColumn width="5em"> 
       <Label text="{i18n>nameCity}" />
       <table:template>
-         <Text text="{i18n>CustomerName}{i18n>CustomerName}"></Text>
+         <Text text="{CustomerName}{CityName}"></Text>
       </table:template>
       <table:customData>
                               <core:CustomData key="p13nData" value='\{"columnKey": "New Column" \}' />
